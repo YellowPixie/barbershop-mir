@@ -92,7 +92,45 @@
     .contact-card .disabled-link:hover { color: #666; }
     .booking-link { display: inline-flex; align-items: center; gap: 10px; background: rgba(155, 89, 182, 0.15); padding: 10px 20px; border-radius: 40px; margin-top: 8px; }
     footer { text-align: center; padding: 32px 0; border-top: 1px solid #1f1f1f; margin-top: 40px; color: #666; font-size: 0.85rem; }
-    @media (max-width: 768px) { .hero-content h2 { font-size: 2.2rem; } .hero-description { max-width: 100%; } .nav { flex-direction: column; align-items: flex-start; } .about { flex-direction: column-reverse; text-align: center; } .section-title { font-size: 1.8rem; } .contact-grid { flex-direction: column; } .gallery-item, .review-card { width: 260px; } .price-item { flex-direction: column; align-items: flex-start; gap: 6px; } .price-value { text-align: left; } }
+       @media (max-width: 900px) {
+      .hero { flex-direction: column; padding: 40px 0 60px; gap: 32px; }
+      .hero-content { width: 100%; }
+      .hero-image { width: 100%; max-width: 400px; margin: 0 auto; }
+      .hero-content h2 { font-size: 2.2rem; }
+      .hero-description { max-width: 100%; font-size: 1rem; }
+      .nav-links { gap: 18px; overflow-x: auto; width: 100%; padding-bottom: 4px; }
+      .nav-links::-webkit-scrollbar { display: none; }
+    }
+    @media (max-width: 600px) {
+      .container { padding: 0 16px; }
+      .logo img { width: 40px; height: 40px; }
+      .logo h1 { font-size: 1.4rem; }
+      .logo p { font-size: 0.7rem; }
+      .hero { padding: 32px 0 48px; gap: 24px; }
+      .hero-content h2 { font-size: 1.8rem; line-height: 1.15; }
+      .hero-badge { font-size: 0.72rem; padding: 5px 12px; }
+      .hero-features { flex-direction: column; gap: 10px; margin-bottom: 24px; }
+      .btn-primary { width: 100%; justify-content: center; padding: 14px 20px; font-size: 1rem; }
+      .nav { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-links { gap: 14px; overflow-x: auto; padding-bottom: 6px; font-size: 0.9rem; }
+      .nav-links a { white-space: nowrap; }
+      .section-title { font-size: 1.5rem; }
+      .section-sub { font-size: 0.85rem; margin-bottom: 24px; }
+      .prices { padding: 32px 16px; border-radius: 24px; margin: 24px 0; }
+      .price-item { flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px 0; }
+      .price-name { font-size: 1rem; }
+      .price-value { text-align: left; font-size: 1.15rem; }
+      .price-time { font-size: 0.85rem; }
+      .gallery-item, .review-card { width: 240px; }
+      .gallery-item img { height: 220px; }
+      .about { flex-direction: column-reverse; text-align: center; padding: 32px 20px; gap: 24px; border-radius: 24px; }
+      .about-text h3 { font-size: 1.4rem; }
+      .about-photo img { max-width: 220px; }
+      .contact-grid { flex-direction: column; gap: 16px; }
+      .contact-card { padding: 24px 16px; border-radius: 20px; }
+      .contact-card i { font-size: 2rem; }
+      footer { font-size: 0.78rem; padding: 24px 16px; }
+    }
   </style>
 </head>
 <body>
