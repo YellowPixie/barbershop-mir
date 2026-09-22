@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>BARBERSHOP MIR | Мужские и детские стрижки</title>
+  <link rel="icon" type="image/webp" href="logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #e5e5e5; line-height: 1.5; scroll-behavior: smooth; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .header { padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .logo { display: flex; align-items: center; gap: 14px; }
+    .logo img { width: 52px; height: 52px; object-fit: cover; border-radius: 12px; }
+    .logo h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.5px; }
+    .logo p { font-size: 0.8rem; color: #888; margin-top: 4px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { color: #ccc; text-decoration: none; font-weight: 500; transition: 0.2s; }
+    .nav-links a:hover { color: #9b59b6; }
+    .hero { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 48px; padding: 60px 0 80px; }
+    .hero-content { flex: 1; }
+    .hero-badge { display: inline-block; background: rgba(155, 89, 182, 0.15); color: #9b59b6; padding: 6px 14px; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 24px; }
+    .hero-content h2 { font-size: 3.2rem; font-weight: 800; line-height: 1.2; margin-bottom: 20px; }
+    .hero-content h2 span { color: #9b59b6; border-bottom: 3px solid #9b59b6; }
+    .hero-description { font-size: 1.1rem; color: #aaa; margin-bottom: 28px; max-width: 90%; }
+    .hero-features { display: flex; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+    .feature { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: #bbb; }
+    .feature i { color: #9b59b6; font-size: 1rem; }
+    .btn-primary { background: #9b59b6; color: #0a0a0a; border: none; padding: 14px 36px; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; transition: all 0.2s; }
+    .btn-primary:hover { background: #8e44ad; transform: scale(1.02); }
+    .hero-image { flex: 1; background: transparent; border-radius: 0; padding: 0; text-align: center; border: none; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; display: block; }
+    .prices { padding: 60px 0; background: #0f0f0f; border-radius: 40px; margin: 40px 0; }
+    .section-title { text-align: center; font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+    .section-sub { text-align: center; color: #888; margin-bottom: 32px; }
+    .price-list { max-width: 620px; margin: 0 auto; }
+    .price-item { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 20px 0; border-bottom: 1px solid #2a2a2a; }
+    .price-name { font-weight: 600; font-size: 1.2rem; }
+    .price-name i { color: #9b59b6; margin-right: 12px; width: 28px; }
+    .price-value { font-weight: 800; color: #9b59b6; font-size: 1.3rem; text-align: right; white-space: nowrap; }
+    .price-time { font-weight: 500; color: #888; font-size: 0.95rem; display: block; margin-top: 4px; }
+    .price-note { text-align: center; margin-top: 32px; color: #666; font-size: 0.85rem; }
+    .gallery { padding: 40px 0 60px; position: relative; }
+    .gallery-scroll-container { width: 100%; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; cursor: grab; position: relative; }
+    .gallery-scroll-container:active { cursor: grabbing; }
+    .gallery-scroll { display: flex; gap: 24px; padding: 10px 0 20px 0; width: max-content; }
+    .gallery-item { background: #141414; border-radius: 20px; overflow: hidden; transition: 0.2s; border: 1px solid #2a2a2a; width: 300px; flex-shrink: 0; }
+    .gallery-item:hover { transform: translateY(-5px); border-color: #9b59b6; }
+    .gallery-item img { width: 100%; height: 260px; object-fit: cover; background: #1a1a1a; }
+    .gallery-item p { padding: 16px; text-align: center; font-weight: 500; }
+    .reviews { padding: 40px 0 60px; position: relative; }
+    .reviews-scroll-container { width: 100%; overflow-x: auto; overflow-y: hidden; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; cursor: grab; position: relative; }
+    .reviews-scroll-container:active { cursor: grabbing; }
+    .reviews-scroll { display: flex; gap: 24px; padding: 10px 0 20px 0; width: max-content; }
+    .review-card { background: #141414; border-radius: 20px; padding: 24px; transition: 0.2s; border: 1px solid #2a2a2a; width: 320px; flex-shrink: 0; }
+    .review-card:hover { transform: translateY(-5px); border-color: #9b59b6; }
+    .review-stars { font-size: 1.2rem; margin-bottom: 12px; letter-spacing: 2px; }
+    .review-stars i { color: #9b59b6; }
+    .review-stars i.far { color: #555; }
+    .review-text { font-size: 0.95rem; color: #ccc; line-height: 1.5; margin-bottom: 16px; font-style: italic; }
+    .review-author { font-weight: 600; color: #9b59b6; }
+    .review-date { font-size: 0.7rem; color: #666; margin-top: 8px; }
+    .gallery-scroll-container::-webkit-scrollbar, .reviews-scroll-container::-webkit-scrollbar { height: 6px; }
+    .gallery-scroll-container::-webkit-scrollbar-track, .reviews-scroll-container::-webkit-scrollbar-track { background: #1a1a1a; border-radius: 10px; }
+    .gallery-scroll-container::-webkit-scrollbar-thumb, .reviews-scroll-container::-webkit-scrollbar-thumb { background: #9b59b6; border-radius: 10px; }
+    .gallery-nav, .reviews-nav { display: flex; justify-content: center; gap: 16px; margin-top: 24px; }
+    .gallery-nav-btn, .reviews-nav-btn { background: rgba(155, 89, 182, 0.2); border: 1px solid #9b59b6; color: #9b59b6; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; }
+    .gallery-nav-btn:hover, .reviews-nav-btn:hover { background: #9b59b6; color: #0a0a0a; transform: scale(1.05); }
+    .about { background: #0f0f0f; border-radius: 40px; padding: 48px 40px; margin: 40px 0; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; }
+    .about-text { flex: 1.5; }
+    .about-text h3 { font-size: 1.8rem; margin-bottom: 20px; }
+    .about-text p { color: #aaa; margin-bottom: 20px; line-height: 1.6; }
+    .about-sign { margin-top: 24px; font-style: italic; color: #9b59b6; }
+    .about-photo { flex: 1; text-align: center; }
+    .about-photo img { width: 100%; max-width: 280px; border-radius: 28px; box-shadow: 0 20px 30px -12px rgba(0,0,0,0.6); border: none; background: #1a1a1a; }
+    .contacts { padding: 40px 0 60px; }
+    .contact-grid { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; margin-top: 40px; }
+    .contact-card { background: #0f0f0f; padding: 32px; border-radius: 24px; flex: 1; min-width: 260px; text-align: center; border: 1px solid #2a2a2a; transition: 0.2s; }
+    .contact-card:hover { border-color: #9b59b6; }
+    .contact-card i { font-size: 2.5rem; color: #9b59b6; margin-bottom: 16px; }
+    .contact-card img { margin-bottom: 16px; }
+    .contact-card h4 { margin-bottom: 12px; font-size: 1.3rem; }
+    .contact-card p { color: #aaa; margin-bottom: 12px; }
+    .contact-card a { color: #9b59b6; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: 0.2s; }
+    .contact-card a:hover { color: #c27ee0; }
+    .contact-card .disabled-link { color: #666; cursor: default; font-weight: 600; font-size: 1.1rem; display: inline-block; margin-top: 8px; }
+    .contact-card .disabled-link:hover { color: #666; }
+    .booking-link { display: inline-flex; align-items: center; gap: 10px; background: rgba(155, 89, 182, 0.15); padding: 10px 20px; border-radius: 40px; margin-top: 8px; }
+    footer { text-align: center; padding: 32px 0; border-top: 1px solid #1f1f1f; margin-top: 40px; color: #666; font-size: 0.85rem; }
+    @media (max-width: 768px) { .hero-content h2 { font-size: 2.2rem; } .hero-description { max-width: 100%; } .nav { flex-direction: column; align-items: flex-start; } .about { flex-direction: column-reverse; text-align: center; } .section-title { font-size: 1.8rem; } .contact-grid { flex-direction: column; } .gallery-item, .review-card { width: 260px; } .price-item { flex-direction: column; align-items: flex-start; gap: 6px; } .price-value { text-align: left; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="nav">
+        <div class="logo">
+          <img src="https://media.tenor.com/saOybZUSPlQAAAAj/spin-haunter.gif" alt="spin">
+          <div>
+            <h1><span style="color: white;">BARBERSHOP</span> <span style="color: #9b59b6;">MIR</span></h1>
+            <p>мужские и детские стрижки</p>
+          </div>
+        </div>
+        <div class="nav-links">
+          <a href="#">Главная</a>
+          <a href="#prices">Цены</a>
+          <a href="#gallery">Работы</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#contacts">Контакты</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-badge"><i class="fas fa-cut"></i> Барбершоп для настоящих мужчин</div>
+        <h2>Стрижка <span>с характером</span><br>для настоящих мужчин</h2>
+        <p class="hero-description">Привет, я Алексей — барбер. Работаю только с мужскими и детскими стрижками. Четкие линии, идеальный фейд, внимание к деталям. Приходи, будет круто!</p>
+        <div class="hero-features">
+          <div class="feature"><i class="fas fa-check-circle"></i> Стерильные инструменты</div>
+          <div class="feature"><i class="fas fa-check-circle"></i> Индивидуальный подход</div>
+          <div class="feature"><i class="fas fa-check-circle"></i> Удобное расположение</div>
+        </div>
+        <button class="btn-primary" id="bookBtn"><i class="fas fa-calendar-alt"></i> Записаться онлайн</button>
+      </div>
+      <div class="hero-image">
+        <img src="barbershopghost.jpg" alt="Алексей барбер">
+      </div>
+    </div>
+
+    <div id="prices" class="prices">
+      <h2 class="section-title">Прайс</h2>
+      <div class="section-sub">Честные цены без скрытых доплат</div>
+      <div class="price-list">
+        <div class="price-item"><div class="price-name"><i class="fas fa-head-side-mask"></i> Ваксинг нос/уши/межбровье</div><div class="price-value">350 RUB<span class="price-time">10 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-child"></i> Детская стрижка (с 8 до 12 лет)</div><div class="price-value">1 150 RUB<span class="price-time">55 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-user-tie"></i> Камуфляж усов/бороды</div><div class="price-value">от 1 200 RUB<span class="price-time">40 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-shower"></i> Мытьё головы, окантовка, укладка</div><div class="price-value">900 RUB<span class="price-time">20 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-palette"></i> Окрашивание волос</div><div class="price-value">от 1 500 RUB<span class="price-time">55 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-user-check"></i> Оформление борды/усов</div><div class="price-value">от 1000 RUB<span class="price-time">40 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-cut"></i> Стрижка</div><div class="price-value">1 300 RUB<span class="price-time">55 м</span></div></div>
+        <div class="price-item"><div class="price-name"><i class="fas fa-cut"></i> Стрижка + борода</div><div class="price-value">2 000 RUB<span class="price-time">1 ч 25 м</span></div></div>
+        <div class="price-note"><i class="fas fa-gift"></i> Для новых клиентов — скидка 10% на первую стрижку</div>
+      </div>
+    </div>
+
+    <div id="gallery" class="gallery">
+      <h2 class="section-title">Мои работы</h2>
+      <div class="section-sub">Автопрокрутка • Наведите для паузы</div>
+      <div class="gallery-scroll-container" id="galleryScroll">
+        <div class="gallery-scroll" id="galleryScrollInner">
+          <div class="gallery-item"><img src="img/teksturnaya.jpg" alt="Текстурная стрижка"><p>Текстурная стрижка</p></div>
+          <div class="gallery-item"><img src="img/fade-boroda.jpg" alt="Высокий фейд + борода"><p>Высокий фейд + борода</p></div>
+          <div class="gallery-item"><img src="img/fade-drugoi.jpg" alt="Высокий фейд"><p>Высокий фейд</p></div>
+          <div class="gallery-item"><img src="img/cezar.jpg" alt="Цезарь"><p>Цезарь</p></div>
+          <div class="gallery-item"><img src="img/fade.jpg" alt="Фейд"><p>Фейд</p></div>
+        </div>
+      </div>
+      <div class="gallery-nav"><button class="gallery-nav-btn" id="galleryPrevBtn"><i class="fas fa-chevron-left"></i></button><button class="gallery-nav-btn" id="galleryNextBtn"><i class="fas fa-chevron-right"></i></button></div>
+    </div>
+
+    <div id="reviews" class="reviews">
+      <h2 class="section-title">Отзывы клиентов</h2>
+      <div class="section-sub">Более 20 довольных клиентов • Листайте →</div>
+      <div class="reviews-scroll-container" id="reviewsScroll">
+        <div class="reviews-scroll" id="reviewsScrollInner">
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Отличная стрижка! Алексей настоящий профессионал. Очень доволен результатом!"</div><div class="review-author">Михаил</div><div class="review-date">март 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Сыну 9 лет, стрижка супер! Алексей нашёл подход к ребёнку, теперь ходим только к нему."</div><div class="review-author">Елена</div><div class="review-date">март 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Атмосфера дружелюбная, стрижка идеальная. Алексей учёл все пожелания. Рекомендую!"</div><div class="review-author">Артем</div><div class="review-date">февраль 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><div class="review-text">"Отличный барбер, видно, что любит свое дело. Цены адекватные, буду возвращаться."</div><div class="review-author">Дмитрий</div><div class="review-date">февраль 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Пришел с хаотичной шевелюрой, вышел как с обложки. Алексей — мастер с большой буквы."</div><div class="review-author">Игорь</div><div class="review-date">январь 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Очень доволен фейдом! Аккуратно, без спешки, дал дельные советы по уходу."</div><div class="review-author">Роман</div><div class="review-date">январь 2026</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Водил сына-подростка — теперь хочет только к Алексею. Стрижка стильная, мальчик счастлив."</div><div class="review-author">Светлана</div><div class="review-date">декабрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Лучший барбер в районе! Всегда чисто, инструменты стерильны, результат огонь."</div><div class="review-author">Константин</div><div class="review-date">декабрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Стрижка держится больше трех недель, форма не теряется. Это профессионализм!"</div><div class="review-author">Андрей</div><div class="review-date">ноябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><div class="review-text">"Очень комфортно, Алексей отвечает на вопросы, подбирает стрижку под форму лица."</div><div class="review-author">Виктор</div><div class="review-date">ноябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Приятный и внимательный мастер. Однозначно вернусь и друзьям посоветую!"</div><div class="review-author">Никита</div><div class="review-date">октябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Делал модельную стрижку. Результат превзошёл ожидания, спасибо!"</div><div class="review-author">Максим</div><div class="review-date">октябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Алексей настоящий профи, легко находит контакт, даже если не знаешь чего хочешь."</div><div class="review-author">Даниил</div><div class="review-date">сентябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Отличная детская стрижка! Ребенок сидел спокойно, мастер отвлек разговором."</div><div class="review-author">Анна</div><div class="review-date">сентябрь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Рекомендую всем, кто ценит качество и индивидуальный подход. Лучший в городе!"</div><div class="review-author">Сергей</div><div class="review-date">август 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><div class="review-text">"Аккуратно, чисто, быстро. Отдельное спасибо за внимание к деталям."</div><div class="review-author">Юрий</div><div class="review-date">август 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Был впервые, записался онлайн. Все четко, стрижка супер, обстановка расслабленная."</div><div class="review-author">Александр</div><div class="review-date">июль 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Стрижка огонь! Алексей учёл структуру волос, дал советы по укладке."</div><div class="review-author">Владислав</div><div class="review-date">июль 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Идеальный фейд, плавные переходы. Видно, что мастер горит своим делом."</div><div class="review-author">Евгений</div><div class="review-date">июнь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Приятный, деликатный барбер. Сын стрижется только у него, всегда довольны."</div><div class="review-author">Татьяна</div><div class="review-date">июнь 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><div class="review-text">"Хороший сервис, чистое помещение, мастер использует профессиональную косметику."</div><div class="review-author">Олег</div><div class="review-date">май 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Всегда вовремя, никаких задержек. Алексей — пунктуальный и ответственный."</div><div class="review-author">Павел</div><div class="review-date">апрель 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Лучшее место для мужской стрижки. Уже полгода хожу и не разочарован."</div><div class="review-author">Глеб</div><div class="review-date">март 2025</div></div>
+          <div class="review-card"><div class="review-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><div class="review-text">"Спасибо за чудесное преображение! Алексей учёл все мои пожелания, буду рекомендовать."</div><div class="review-author">Станислав</div><div class="review-date">февраль 2025</div></div>
+        </div>
+      </div>
+      <div class="reviews-nav"><button class="reviews-nav-btn" id="reviewsPrevBtn"><i class="fas fa-chevron-left"></i></button><button class="reviews-nav-btn" id="reviewsNextBtn"><i class="fas fa-chevron-right"></i></button></div>
+    </div>
+
+    <div class="about">
+      <div class="about-text">
+        <h3>Обо мне</h3>
+        <p>Меня зовут Алексей, я барбер. Специализируюсь на мужских и детских стрижках, потому что считаю: каждый мужчина и мальчик заслуживают стильный и ухоженный вид.</p>
+        <p>Работаю только премиальными инструментами (WAHL, Babyliss), использую профессиональную косметику. Нахожу подход к любому клиенту — от шумных мальчишек до требовательных джентльменов.</p>
+        <p>Моя философия: стрижка должна быть удобной в носке и сохранять форму минимум 3 недели. Приходите — сделаем образ, который подчеркнет вашу индивидуальность.</p>
+        <div class="about-sign">✂️ Алексей, ваш барбер</div>
+      </div>
+      <div class="about-photo"><img src="img/alexey.jpg" alt="Алексей барбер"></div>
+    </div>
+
+    <div id="contacts" class="contacts">
+      <h2 class="section-title">Как записаться?</h2>
+      <div class="section-sub">Выберите удобный способ</div>
+      <div class="contact-grid">
+        <div class="contact-card"><i class="fas fa-calendar-alt"></i><h4>Онлайн-запись</h4><p>Выберите удобное время</p><a href="https://dikidi.net/profile/barbershop_mirotvorec_1930261/" target="_blank" class="booking-link"><i class="fas fa-external-link-alt"></i> Перейти к записи</a></div>
+        <div class="contact-card"><i class="fas fa-phone-alt"></i><h4>Звонок</h4><p>Пн–Вс 10:00 – 21:00</p><a href="tel:+79185514143">+7 (918) 551-41-43</a></div>
+        <div class="contact-card"><i class="fas fa-map-marker-alt"></i><h4>Адрес</h4><p>Ростов-на-Дону<br>Ерёменко 110/2с2</p><a href="https://yandex.ru/maps/org/mir/113090234140/?ll=39.586077%2C47.229532&z=17" target="_blank"><i class="fas fa-map"></i> Найти на карте</a></div>
+        <div class="contact-card"><i class="fab fa-telegram"></i><h4>Telegram</h4><p>Быстрая связь</p><a href="https://t.me/drillez" target="_blank">@drillez</a></div>
+        <div class="contact-card">
+          <img src="Логотип_MAX.png" alt="MAX" style="width: 48px; height: 48px; object-fit: contain; margin-bottom: 16px;">
+          <h4>MAX</h4>
+          <p>Скоро здесь будет что-то совсем не интересное</p>
+          <span class="disabled-link">в разработке(я никогда его не доделаю)</span>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2026 ALEX GLT — мужские и детские стрижки. Ростов-на-Дону, 30-я линия 16</p>
+    </footer>
+  </div>
+
+  <script>
+    const BOOKING_URL = "https://dikidi.net/profile/barbershop_mirotvorec_1930261/";
+    document.getElementById('bookBtn').addEventListener('click', () => window.open(BOOKING_URL, '_blank'));
+
+    // Автопрокрутка галереи
+    const scrollContainer = document.getElementById('galleryScroll');
+    const prevBtn = document.getElementById('galleryPrevBtn');
+    const nextBtn = document.getElementById('galleryNextBtn');
+    let autoScrollInterval, isHovering = false;
+    const scrollSpeed = 1.5, scrollDelay = 30;
+    function scrollRight() { if (!isHovering && scrollContainer) { scrollContainer.scrollLeft += scrollSpeed; if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 5) scrollContainer.scrollLeft = 0; } }
+    function scrollLeftManual() { scrollContainer.scrollLeft -= 280; if (scrollContainer.scrollLeft < 0) scrollContainer.scrollLeft = 0; }
+    function scrollRightManual() { scrollContainer.scrollLeft += 280; if (scrollContainer.scrollLeft + scrollContainer.clientWidth > scrollContainer.scrollWidth) scrollContainer.scrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth; }
+    function startAutoScroll() { if (autoScrollInterval) clearInterval(autoScrollInterval); autoScrollInterval = setInterval(scrollRight, scrollDelay); }
+    function stopAutoScroll() { if (autoScrollInterval) { clearInterval(autoScrollInterval); autoScrollInterval = null; } }
+    scrollContainer.addEventListener('mouseenter', () => { isHovering = true; stopAutoScroll(); });
+    scrollContainer.addEventListener('mouseleave', () => { isHovering = false; startAutoScroll(); });
+    scrollContainer.addEventListener('touchstart', () => { isHovering = true; stopAutoScroll(); });
+    scrollContainer.addEventListener('touchend', () => { setTimeout(() => { if (!isHovering) startAutoScroll(); }, 2000); });
+    prevBtn.addEventListener('click', () => { stopAutoScroll(); scrollLeftManual(); setTimeout(() => { if (!isHovering) startAutoScroll(); }, 3000); });
+    nextBtn.addEventListener('click', () => { stopAutoScroll(); scrollRightManual(); setTimeout(() => { if (!isHovering) startAutoScroll(); }, 3000); });
+    startAutoScroll();
+    let manualScrollTimeout;
+    scrollContainer.addEventListener('scroll', () => { if (!isHovering) { stopAutoScroll(); clearTimeout(manualScrollTimeout); manualScrollTimeout = setTimeout(() => { if (!isHovering) startAutoScroll(); }, 3000); } });
+
+    // Автопрокрутка отзывов
+    const reviewsScroll = document.getElementById('reviewsScroll');
+    const reviewsPrev = document.getElementById('reviewsPrevBtn');
+    const reviewsNext = document.getElementById('reviewsNextBtn');
+    let autoReviewsInterval, isReviewsHovering = false;
+    const reviewsScrollSpeed = 1.5, reviewsDelay = 35;
+    function scrollReviewsRight() { if (!isReviewsHovering && reviewsScroll) { reviewsScroll.scrollLeft += reviewsScrollSpeed; if (reviewsScroll.scrollLeft + reviewsScroll.clientWidth >= reviewsScroll.scrollWidth - 5) reviewsScroll.scrollLeft = 0; } }
+    function scrollReviewsLeftManual() { reviewsScroll.scrollLeft -= 320; if (reviewsScroll.scrollLeft < 0) reviewsScroll.scrollLeft = 0; }
+    function scrollReviewsRightManual() { reviewsScroll.scrollLeft += 320; if (reviewsScroll.scrollLeft + reviewsScroll.clientWidth > reviewsScroll.scrollWidth) reviewsScroll.scrollLeft = reviewsScroll.scrollWidth - reviewsScroll.clientWidth; }
+    function startAutoReviewsScroll() { if (autoReviewsInterval) clearInterval(autoReviewsInterval); autoReviewsInterval = setInterval(scrollReviewsRight, reviewsDelay); }
+    function stopAutoReviewsScroll() { if (autoReviewsInterval) { clearInterval(autoReviewsInterval); autoReviewsInterval = null; } }
+    reviewsScroll.addEventListener('mouseenter', () => { isReviewsHovering = true; stopAutoReviewsScroll(); });
+    reviewsScroll.addEventListener('mouseleave', () => { isReviewsHovering = false; startAutoReviewsScroll(); });
+    reviewsScroll.addEventListener('touchstart', () => { isReviewsHovering = true; stopAutoReviewsScroll(); });
+    reviewsScroll.addEventListener('touchend', () => { setTimeout(() => { if (!isReviewsHovering) startAutoReviewsScroll(); }, 2000); });
+    reviewsPrev.addEventListener('click', () => { stopAutoReviewsScroll(); scrollReviewsLeftManual(); setTimeout(() => { if (!isReviewsHovering) startAutoReviewsScroll(); }, 3000); });
+    reviewsNext.addEventListener('click', () => { stopAutoReviewsScroll(); scrollReviewsRightManual(); setTimeout(() => { if (!isReviewsHovering) startAutoReviewsScroll(); }, 3000); });
+    startAutoReviewsScroll();
+    let manualReviewsScrollTimeout;
+    reviewsScroll.addEventListener('scroll', () => { if (!isReviewsHovering) { stopAutoReviewsScroll(); clearTimeout(manualReviewsScrollTimeout); manualReviewsScrollTimeout = setTimeout(() => { if (!isReviewsHovering) startAutoReviewsScroll(); }, 3000); } });
+  </script>
+</body>
+</html>
